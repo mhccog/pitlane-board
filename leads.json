@@ -1,5 +1,5 @@
 {
- "updated": "Fri 30 Oct 2026, 14:38 UK time",
+ "updated": "Fri 30 Oct 2026, 14:42 UK time",
  "leads": [
   {
    "id": 0,
@@ -279,7 +279,7 @@
    "stockUrl": "https://www.premiergt.com/sell-your-car",
    "isNew": false,
    "key": "seller|facebook|terry robertson|porsche 911 gt3 (991.2) clubsp",
-   "matches": 8
+   "matches": 7
   },
   {
    "id": 10,
@@ -363,7 +363,7 @@
    "stockUrl": "https://www.premiergt.com/used/cars/porsche/911-gt3/-30k-in-options-weissach-package-pccbs-lift-system-bose-2226",
    "isNew": false,
    "key": "buyer|911uk|sandro08|992.1 turbo s or gt3 touring (",
-   "matches": 6
+   "matches": 5
   },
   {
    "id": 13,
@@ -1036,7 +1036,7 @@
    "stockUrl": "https://www.premiergt.com/sell-your-car",
    "isNew": true,
    "key": "seller|911uk|woodypolo|911 (993) c2 manual coupe, rhd",
-   "matches": 3
+   "matches": 4
   },
   {
    "id": 36,
@@ -1344,7 +1344,7 @@
    "stockUrl": "https://www.premiergt.com/sell-your-car",
    "isNew": true,
    "key": "seller|911uk|hammy67|2010 997.2 targa 4s pdk, black",
-   "matches": 4
+   "matches": 3
   },
   {
    "id": 47,
@@ -1708,7 +1708,7 @@
    "stockUrl": "",
    "isNew": false,
    "key": "buyer|facebook|chris roberts|porsche 997.2 carrera s/4s man",
-   "matches": 1
+   "matches": 0
   },
   {
    "id": 60,
@@ -2584,7 +2584,7 @@
    "stockUrl": "https://www.premiergt.com/sell-your-car",
    "isNew": true,
    "key": "seller|facebook|chris gold|2016 porsche 911 gt3 rs (991.1",
-   "matches": 6
+   "matches": 5
   },
   {
    "id": 89,
@@ -5040,25 +5040,6 @@
    "reason": "Same 991.2 GT3; asking not stated, budget not stated",
    "date": "2026-09-17",
    "cross": true,
-   "buyer": 12,
-   "seller": 9,
-   "stock": null,
-   "kind": "P",
-   "sellerPlatform": "Facebook",
-   "buyerPlatform": "911UK",
-   "car": "Porsche 911 GT3 (991.2) Clubsport PDK, 2018, 25k miles",
-   "brand": "Porsche",
-   "price": "",
-   "url": "https://www.facebook.com/groups/1138597137914566/posts/1609151234192485/",
-   "status": ""
-  },
-  {
-   "id": 2,
-   "fit": "Strong",
-   "score": 4,
-   "reason": "Same 991.2 GT3; asking not stated, budget not stated",
-   "date": "2026-09-17",
-   "cross": true,
    "buyer": 67,
    "seller": 9,
    "stock": null,
@@ -5072,7 +5053,7 @@
    "status": ""
   },
   {
-   "id": 3,
+   "id": 2,
    "fit": "Strong",
    "score": 4,
    "reason": "Same 991.2 GT3; asking not stated, budget £150,000",
@@ -5091,7 +5072,7 @@
    "status": ""
   },
   {
-   "id": 4,
+   "id": 3,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same GranTurismo; asking £57,950, budget not stated",
@@ -5110,10 +5091,10 @@
    "status": "For sale"
   },
   {
-   "id": 5,
+   "id": 4,
    "fit": "Good",
    "score": 3.5,
-   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget £150,000; both Scotland/Wales/NI; seller flagged: cat n",
+   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget £150,000; both Scotland/Wales/NI; seller flagged: Cat N",
    "date": "2026-10-29",
    "cross": true,
    "buyer": 138,
@@ -5129,7 +5110,7 @@
    "status": ""
   },
   {
-   "id": 6,
+   "id": 5,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 991 GT3; asking not stated, budget not stated",
@@ -5148,7 +5129,7 @@
    "status": ""
   },
   {
-   "id": 7,
+   "id": 6,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same Huracan; asking £229,000, budget not stated; seller flagged: no sale-or-return calls",
@@ -5167,7 +5148,7 @@
    "status": ""
   },
   {
-   "id": 8,
+   "id": 7,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same Huracan; asking £229,000, budget not stated; seller flagged: no sale-or-return calls",
@@ -5186,7 +5167,7 @@
    "status": ""
   },
   {
-   "id": 9,
+   "id": 8,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same DB9; asking £40,950, budget not stated",
@@ -5205,7 +5186,7 @@
    "status": ""
   },
   {
-   "id": 10,
+   "id": 9,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 996 GT3; asking £92,495, budget not stated",
@@ -5224,7 +5205,7 @@
    "status": ""
   },
   {
-   "id": 11,
+   "id": 10,
    "fit": "Good",
    "score": 3.0,
    "reason": "Same Huracan (EVO vs the Performante wanted); asking £229,000, budget £250,000; seller flagged: no sale-or-return calls",
@@ -5243,7 +5224,7 @@
    "status": ""
   },
   {
-   "id": 12,
+   "id": 11,
    "fit": "Good",
    "score": 3,
    "reason": "Same 993; asking not stated, budget £60,000",
@@ -5262,7 +5243,7 @@
    "status": ""
   },
   {
-   "id": 13,
+   "id": 12,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 992 Targa; asking £97,995, budget not stated",
@@ -5281,7 +5262,7 @@
    "status": "For sale"
   },
   {
-   "id": 14,
+   "id": 13,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 996 Turbo; asking £32,000, budget not stated",
@@ -5300,7 +5281,7 @@
    "status": ""
   },
   {
-   "id": 15,
+   "id": 14,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 812; asking £409,995, budget not stated",
@@ -5319,7 +5300,7 @@
    "status": "For sale"
   },
   {
-   "id": 16,
+   "id": 15,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 996 Turbo; asking £69,900, budget not stated",
@@ -5338,7 +5319,7 @@
    "status": ""
   },
   {
-   "id": 17,
+   "id": 16,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 996 Turbo; asking not stated, budget not stated",
@@ -5357,7 +5338,7 @@
    "status": ""
   },
   {
-   "id": 18,
+   "id": 17,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same DBX; asking £184,995, budget not stated",
@@ -5376,7 +5357,7 @@
    "status": "For sale"
   },
   {
-   "id": 19,
+   "id": 18,
    "fit": "Good",
    "score": 3,
    "reason": "Same 993; asking not stated, budget not stated",
@@ -5395,7 +5376,7 @@
    "status": ""
   },
   {
-   "id": 20,
+   "id": 19,
    "fit": "Good",
    "score": 3,
    "reason": "Same 993; asking not stated, budget not stated",
@@ -5414,7 +5395,7 @@
    "status": ""
   },
   {
-   "id": 21,
+   "id": 20,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 997 Turbo; asking not stated, budget not stated",
@@ -5433,7 +5414,7 @@
    "status": ""
   },
   {
-   "id": 22,
+   "id": 21,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 997 Turbo; asking not stated, budget £65,000",
@@ -5452,7 +5433,7 @@
    "status": ""
   },
   {
-   "id": 23,
+   "id": 22,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same Huracan; asking £299,995, budget £250,000 (£49,995 over)",
@@ -5471,7 +5452,7 @@
    "status": "For sale"
   },
   {
-   "id": 24,
+   "id": 23,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same Sports Series; asking £85,000, budget not stated",
@@ -5490,26 +5471,7 @@
    "status": ""
   },
   {
-   "id": 25,
-   "fit": "Good",
-   "score": 3.5,
-   "reason": "Same 991 GT3; asking not stated, budget not stated",
-   "date": "2026-09-08",
-   "cross": true,
-   "buyer": 12,
-   "seller": 53,
-   "stock": null,
-   "kind": "P",
-   "sellerPlatform": "PistonHeads",
-   "buyerPlatform": "911UK",
-   "car": "991 GT3 (PDK)",
-   "brand": "Porsche",
-   "price": "",
-   "url": "https://www.pistonheads.com/gassing/topic.asp?h=0&t=2149730",
-   "status": ""
-  },
-  {
-   "id": 26,
+   "id": 24,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 600LT; asking £154,950, budget not stated",
@@ -5528,7 +5490,7 @@
    "status": "For sale"
   },
   {
-   "id": 27,
+   "id": 25,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 991 GT3; asking not stated, budget £85,000",
@@ -5547,7 +5509,7 @@
    "status": ""
   },
   {
-   "id": 28,
+   "id": 26,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 991 GT3; asking not stated, budget not stated",
@@ -5566,7 +5528,7 @@
    "status": ""
   },
   {
-   "id": 29,
+   "id": 27,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 991 GT3; asking not stated, budget not stated",
@@ -5585,7 +5547,7 @@
    "status": ""
   },
   {
-   "id": 30,
+   "id": 28,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 991 GT3; asking not stated, budget not stated",
@@ -5604,7 +5566,7 @@
    "status": ""
   },
   {
-   "id": 31,
+   "id": 29,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 991 GT3; asking not stated, budget £150,000",
@@ -5623,7 +5585,7 @@
    "status": ""
   },
   {
-   "id": 32,
+   "id": 30,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 650S; asking £264,995, budget not stated",
@@ -5642,7 +5604,7 @@
    "status": "For sale"
   },
   {
-   "id": 33,
+   "id": 31,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 720S; asking £144,995, budget not stated",
@@ -5661,13 +5623,51 @@
    "status": "For sale"
   },
   {
-   "id": 34,
+   "id": 32,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same Continental; asking £129,995, budget not stated",
    "date": "2026-09-04",
    "cross": true,
    "buyer": 57,
+   "seller": null,
+   "stock": 27,
+   "kind": "D",
+   "sellerPlatform": "Premier GT",
+   "buyerPlatform": "PistonHeads",
+   "car": "2021 Bentley Continental GTC V8",
+   "brand": "Bentley",
+   "price": "£129,995",
+   "url": "https://www.premiergt.com/used/cars/bentley/continental-gtc/v8-mulliner-spec-dynamic-ride-rotating-display-carbon-interior-2228",
+   "status": "For sale"
+  },
+  {
+   "id": 33,
+   "fit": "Good",
+   "score": 3.5,
+   "reason": "Same Continental; asking £113,950, budget not stated",
+   "date": "2026-09-04",
+   "cross": true,
+   "buyer": 57,
+   "seller": null,
+   "stock": 62,
+   "kind": "D",
+   "sellerPlatform": "Scuderia Prestige",
+   "buyerPlatform": "PistonHeads",
+   "car": "2021 Bentley Continental V8 GTC Titanium Exhaust",
+   "brand": "Bentley",
+   "price": "£113,950",
+   "url": "https://www.scuderiaprestige.com/vehicle-details/used-bentley-continental-v8-gtc-for-sale-in-camberley-surrey-u1800/",
+   "status": "For sale"
+  },
+  {
+   "id": 34,
+   "fit": "Good",
+   "score": 3.5,
+   "reason": "Same Continental; asking £129,995, budget not stated",
+   "date": "2026-09-03",
+   "cross": true,
+   "buyer": 58,
    "seller": null,
    "stock": 27,
    "kind": "D",
@@ -5684,9 +5684,9 @@
    "fit": "Good",
    "score": 3.5,
    "reason": "Same Continental; asking £113,950, budget not stated",
-   "date": "2026-09-04",
+   "date": "2026-09-03",
    "cross": true,
-   "buyer": 57,
+   "buyer": 58,
    "seller": null,
    "stock": 62,
    "kind": "D",
@@ -5700,44 +5700,6 @@
   },
   {
    "id": 36,
-   "fit": "Good",
-   "score": 3.5,
-   "reason": "Same Continental; asking £129,995, budget not stated",
-   "date": "2026-09-03",
-   "cross": true,
-   "buyer": 58,
-   "seller": null,
-   "stock": 27,
-   "kind": "D",
-   "sellerPlatform": "Premier GT",
-   "buyerPlatform": "PistonHeads",
-   "car": "2021 Bentley Continental GTC V8",
-   "brand": "Bentley",
-   "price": "£129,995",
-   "url": "https://www.premiergt.com/used/cars/bentley/continental-gtc/v8-mulliner-spec-dynamic-ride-rotating-display-carbon-interior-2228",
-   "status": "For sale"
-  },
-  {
-   "id": 37,
-   "fit": "Good",
-   "score": 3.5,
-   "reason": "Same Continental; asking £113,950, budget not stated",
-   "date": "2026-09-03",
-   "cross": true,
-   "buyer": 58,
-   "seller": null,
-   "stock": 62,
-   "kind": "D",
-   "sellerPlatform": "Scuderia Prestige",
-   "buyerPlatform": "PistonHeads",
-   "car": "2021 Bentley Continental V8 GTC Titanium Exhaust",
-   "brand": "Bentley",
-   "price": "£113,950",
-   "url": "https://www.scuderiaprestige.com/vehicle-details/used-bentley-continental-v8-gtc-for-sale-in-camberley-surrey-u1800/",
-   "status": "For sale"
-  },
-  {
-   "id": 38,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 992 GT3; asking £199,995, budget not stated",
@@ -5756,7 +5718,7 @@
    "status": "For sale"
   },
   {
-   "id": 39,
+   "id": 37,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 992 GT3; asking £183,950, budget not stated",
@@ -5775,7 +5737,7 @@
    "status": "For sale"
   },
   {
-   "id": 40,
+   "id": 38,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 992 GT3; asking £166,950, budget not stated",
@@ -5794,7 +5756,7 @@
    "status": "For sale"
   },
   {
-   "id": 41,
+   "id": 39,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 296; asking £259,950, budget not stated",
@@ -5813,7 +5775,7 @@
    "status": "For sale"
   },
   {
-   "id": 42,
+   "id": 40,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same R8; asking not stated, budget not stated",
@@ -5832,7 +5794,7 @@
    "status": ""
   },
   {
-   "id": 43,
+   "id": 41,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 720S; asking £144,995, budget not stated",
@@ -5851,7 +5813,7 @@
    "status": "For sale"
   },
   {
-   "id": 44,
+   "id": 42,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same 812; asking £409,995, budget not stated",
@@ -5870,7 +5832,7 @@
    "status": "For sale"
   },
   {
-   "id": 45,
+   "id": 43,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same F8; asking £299,995, budget not stated",
@@ -5889,45 +5851,7 @@
    "status": "For sale"
   },
   {
-   "id": 46,
-   "fit": "Good",
-   "score": 3.5,
-   "reason": "Same F430; asking £749,995, budget not stated",
-   "date": "2026-04",
-   "cross": true,
-   "buyer": 129,
-   "seller": null,
-   "stock": 4,
-   "kind": "D",
-   "sellerPlatform": "Premier GT",
-   "buyerPlatform": "Ferrari Owners Club GB (small ads)",
-   "car": "2009 Ferrari F430 Scuderia Spider 16M",
-   "brand": "Ferrari",
-   "price": "£749,995",
-   "url": "https://www.premiergt.com/used/cars/ferrari/f430/scuderia-spider-16m-1-of-499-1-of-48-rhd-uk-car-factory-satin-paint-2174",
-   "status": "For sale"
-  },
-  {
-   "id": 47,
-   "fit": "Good",
-   "score": 3.5,
-   "reason": "Same F430; asking £409,995, budget not stated",
-   "date": "2026-04",
-   "cross": true,
-   "buyer": 129,
-   "seller": null,
-   "stock": 6,
-   "kind": "D",
-   "sellerPlatform": "Premier GT",
-   "buyerPlatform": "Ferrari Owners Club GB (small ads)",
-   "car": "2010 Ferrari F430 Scuderia",
-   "brand": "Ferrari",
-   "price": "£409,995",
-   "url": "https://www.premiergt.com/used/cars/ferrari/f430/scuderia-uk-supplied-full-fsh-grigio-corsa-racing-livery-carbon-int-2198",
-   "status": "For sale"
-  },
-  {
-   "id": 48,
+   "id": 44,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same DBX; asking £184,995, budget not stated",
@@ -5946,7 +5870,7 @@
    "status": "For sale"
   },
   {
-   "id": 49,
+   "id": 45,
    "fit": "Good",
    "score": 3.5,
    "reason": "Same Roma/Amalfi; asking £224,950, budget not stated",
@@ -5965,10 +5889,10 @@
    "status": "For sale"
   },
   {
-   "id": 50,
+   "id": 46,
    "fit": "Possible",
    "score": 2,
-   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: cat n",
+   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: Cat N",
    "date": "2026-10-29",
    "cross": true,
    "buyer": 3,
@@ -5984,29 +5908,10 @@
    "status": ""
   },
   {
-   "id": 51,
+   "id": 47,
    "fit": "Possible",
    "score": 2,
-   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: cat n",
-   "date": "2026-10-29",
-   "cross": true,
-   "buyer": 12,
-   "seller": 88,
-   "stock": null,
-   "kind": "P",
-   "sellerPlatform": "Facebook",
-   "buyerPlatform": "911UK",
-   "car": "2016 Porsche 911 GT3 RS (991.1), Cat N",
-   "brand": "Porsche",
-   "price": "£110,000",
-   "url": "https://www.facebook.com/groups/1138597137914566/posts/1648047263636215/",
-   "status": ""
-  },
-  {
-   "id": 52,
-   "fit": "Possible",
-   "score": 2,
-   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: cat n",
+   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: Cat N",
    "date": "2026-10-29",
    "cross": true,
    "buyer": 67,
@@ -6022,10 +5927,10 @@
    "status": ""
   },
   {
-   "id": 53,
+   "id": 48,
    "fit": "Possible",
    "score": 2,
-   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: cat n",
+   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: Cat N",
    "date": "2026-10-29",
    "cross": true,
    "buyer": 71,
@@ -6041,10 +5946,10 @@
    "status": ""
   },
   {
-   "id": 54,
+   "id": 49,
    "fit": "Possible",
    "score": 2,
-   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: cat n",
+   "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £110,000, budget not stated; seller flagged: Cat N",
    "date": "2026-10-29",
    "cross": true,
    "buyer": 127,
@@ -6060,7 +5965,7 @@
    "status": ""
   },
   {
-   "id": 55,
+   "id": 50,
    "fit": "Possible",
    "score": 2,
    "reason": "DB9 as a close alternative to the DB7 wanted; asking £40,950, budget not stated",
@@ -6079,7 +5984,7 @@
    "status": ""
   },
   {
-   "id": 56,
+   "id": 51,
    "fit": "Possible",
    "score": 2,
    "reason": "SLS as a close alternative to the AMG GT wanted; asking £326,995, budget not stated",
@@ -6098,7 +6003,7 @@
    "status": "For sale"
   },
   {
-   "id": 57,
+   "id": 52,
    "fit": "Possible",
    "score": 2,
    "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £399,995, budget not stated",
@@ -6117,7 +6022,7 @@
    "status": "For sale"
   },
   {
-   "id": 58,
+   "id": 53,
    "fit": "Possible",
    "score": 2.5,
    "reason": "Same 996 GT3; asking £92,495, budget £65,000 (£27,495 over)",
@@ -6136,7 +6041,7 @@
    "status": ""
   },
   {
-   "id": 59,
+   "id": 54,
    "fit": "Possible",
    "score": 2,
    "reason": "Targa as a close alternative to the 911 wanted; asking £97,995, budget not stated",
@@ -6155,7 +6060,7 @@
    "status": "For sale"
   },
   {
-   "id": 60,
+   "id": 55,
    "fit": "Possible",
    "score": 2.0,
    "reason": "Same Huracan (EVO vs the Sterrato wanted); asking £229,000, budget not stated; seller flagged: no sale-or-return calls",
@@ -6174,7 +6079,7 @@
    "status": ""
   },
   {
-   "id": 61,
+   "id": 56,
    "fit": "Possible",
    "score": 1.5,
    "reason": "Open to any Porsche; this is a 911 Cabriolet; asking £179,950, budget not stated",
@@ -6193,7 +6098,7 @@
    "status": ""
   },
   {
-   "id": 62,
+   "id": 57,
    "fit": "Possible",
    "score": 2,
    "reason": "SLS as a close alternative to the AMG GT wanted; asking £326,995, budget not stated",
@@ -6212,7 +6117,7 @@
    "status": "For sale"
   },
   {
-   "id": 63,
+   "id": 58,
    "fit": "Possible",
    "score": 1.5,
    "reason": "Open to any Porsche; this is a 911 Cabriolet; asking £48,000, budget not stated",
@@ -6231,7 +6136,7 @@
    "status": ""
   },
   {
-   "id": 64,
+   "id": 59,
    "fit": "Possible",
    "score": 2,
    "reason": "RS6 as a close alternative to the RS4 wanted; asking £82,950, budget not stated",
@@ -6250,10 +6155,10 @@
    "status": "For sale"
   },
   {
-   "id": 65,
+   "id": 60,
    "fit": "Possible",
    "score": 1.5,
-   "reason": "Same 812 (COMPETIZIONE vs the Gts wanted); asking POA, budget not stated; deposit taken",
+   "reason": "Same 812 (Competizione vs the GTS wanted); asking POA, budget not stated; deposit taken",
    "date": "2026-10-14",
    "cross": true,
    "buyer": 33,
@@ -6269,7 +6174,26 @@
    "status": "Deposit Taken"
   },
   {
-   "id": 66,
+   "id": 61,
+   "fit": "Possible",
+   "score": 1.5,
+   "reason": "Open to any Porsche; this is a 911; asking not stated, budget not stated",
+   "date": "2026-10-12",
+   "cross": true,
+   "buyer": 133,
+   "seller": 35,
+   "stock": null,
+   "kind": "P",
+   "sellerPlatform": "911UK",
+   "buyerPlatform": "LinkedIn",
+   "car": "911 (993) C2 manual coupe, RHD, owned 25 years",
+   "brand": "Porsche",
+   "price": "",
+   "url": "https://www.911uk.com/porsche/993-coupe-manual-wanted.136518/",
+   "status": ""
+  },
+  {
+   "id": 62,
    "fit": "Possible",
    "score": 2,
    "reason": "Targa as a close alternative to the 911 wanted; asking not stated, budget not stated",
@@ -6288,10 +6212,10 @@
    "status": ""
   },
   {
-   "id": 67,
+   "id": 63,
    "fit": "Possible",
    "score": 2.5,
-   "reason": "Same Revuelto (standard vs the Sv wanted); asking £449,000, budget not stated; South East / London",
+   "reason": "Same Revuelto (standard vs the SV wanted); asking £449,000, budget not stated; South East / London",
    "date": "2026-10-03",
    "cross": true,
    "buyer": 110,
@@ -6307,10 +6231,10 @@
    "status": "For sale"
   },
   {
-   "id": 68,
+   "id": 64,
    "fit": "Possible",
    "score": 1.5,
-   "reason": "Same 812 (COMPETIZIONE vs the Superfast wanted); asking POA, budget £250,000; deposit taken",
+   "reason": "Same 812 (Competizione vs the Superfast wanted); asking POA, budget £250,000; deposit taken",
    "date": "2026-09-26",
    "cross": true,
    "buyer": 7,
@@ -6326,7 +6250,7 @@
    "status": "Deposit Taken"
   },
   {
-   "id": 69,
+   "id": 65,
    "fit": "Possible",
    "score": 2.5,
    "reason": "Same FF/GTC4Lusso; asking £129,950, budget £90,000 (£39,950 over)",
@@ -6345,7 +6269,7 @@
    "status": "For sale"
   },
   {
-   "id": 70,
+   "id": 66,
    "fit": "Possible",
    "score": 2,
    "reason": "Targa as a close alternative to the 911 wanted; asking not stated, budget £40,000",
@@ -6364,7 +6288,7 @@
    "status": ""
   },
   {
-   "id": 71,
+   "id": 67,
    "fit": "Possible",
    "score": 2,
    "reason": "Targa as a close alternative to the 911 wanted; asking not stated, budget not stated",
@@ -6383,26 +6307,26 @@
    "status": ""
   },
   {
-   "id": 72,
+   "id": 68,
    "fit": "Possible",
-   "score": 2,
-   "reason": "Targa as a close alternative to the 911 wanted; asking not stated, budget not stated",
+   "score": 2.5,
+   "reason": "Same 991.2 GT3 (paddle-shift; buyer wants a manual); asking not stated, budget not stated",
    "date": "2026-09-17",
    "cross": true,
-   "buyer": 59,
-   "seller": 46,
+   "buyer": 12,
+   "seller": 9,
    "stock": null,
    "kind": "P",
-   "sellerPlatform": "911UK",
-   "buyerPlatform": "Facebook",
-   "car": "2010 997.2 Targa 4S PDK, black",
+   "sellerPlatform": "Facebook",
+   "buyerPlatform": "911UK",
+   "car": "Porsche 911 GT3 (991.2) Clubsport PDK, 2018, 25k miles",
    "brand": "Porsche",
    "price": "",
-   "url": "https://www.911uk.com/porsche/for-sale-2010-997-2-targa-4s.136597/",
+   "url": "https://www.facebook.com/groups/1138597137914566/posts/1609151234192485/",
    "status": ""
   },
   {
-   "id": 73,
+   "id": 69,
    "fit": "Possible",
    "score": 2,
    "reason": "991.2 GT3; buyer wants 991.1; asking not stated, budget £85,000",
@@ -6421,7 +6345,7 @@
    "status": ""
   },
   {
-   "id": 74,
+   "id": 70,
    "fit": "Possible",
    "score": 2,
    "reason": "Targa as a close alternative to the 911 wanted; asking not stated, budget not stated",
@@ -6440,7 +6364,7 @@
    "status": ""
   },
   {
-   "id": 75,
+   "id": 71,
    "fit": "Possible",
    "score": 2,
    "reason": "991.2 GT3; buyer wants 991.1; asking not stated, budget not stated",
@@ -6459,7 +6383,7 @@
    "status": ""
   },
   {
-   "id": 76,
+   "id": 72,
    "fit": "Possible",
    "score": 2,
    "reason": "Targa as a close alternative to the 911 wanted; asking not stated, budget £28,000",
@@ -6478,7 +6402,7 @@
    "status": ""
   },
   {
-   "id": 77,
+   "id": 73,
    "fit": "Possible",
    "score": 2,
    "reason": "Targa as a close alternative to the 911 wanted; asking not stated, budget not stated",
@@ -6497,7 +6421,7 @@
    "status": ""
   },
   {
-   "id": 78,
+   "id": 74,
    "fit": "Possible",
    "score": 2,
    "reason": "991.2 GT3; buyer wants 991.1; asking not stated, budget not stated",
@@ -6516,26 +6440,7 @@
    "status": ""
   },
   {
-   "id": 79,
-   "fit": "Possible",
-   "score": 1.5,
-   "reason": "Open to any Porsche; this is a GT3; asking not stated, budget not stated",
-   "date": "2026-09-17",
-   "cross": true,
-   "buyer": 133,
-   "seller": 9,
-   "stock": null,
-   "kind": "P",
-   "sellerPlatform": "Facebook",
-   "buyerPlatform": "LinkedIn",
-   "car": "Porsche 911 GT3 (991.2) Clubsport PDK, 2018, 25k miles",
-   "brand": "Porsche",
-   "price": "",
-   "url": "https://www.facebook.com/groups/1138597137914566/posts/1609151234192485/",
-   "status": ""
-  },
-  {
-   "id": 80,
+   "id": 75,
    "fit": "Possible",
    "score": 2,
    "reason": "600LT as a close alternative to the Sports Series wanted; asking £154,950, budget not stated",
@@ -6554,7 +6459,26 @@
    "status": "For sale"
   },
   {
-   "id": 81,
+   "id": 76,
+   "fit": "Possible",
+   "score": 2.0,
+   "reason": "Same 991 GT3 (paddle-shift; buyer wants a manual); asking not stated, budget not stated",
+   "date": "2026-09-08",
+   "cross": true,
+   "buyer": 12,
+   "seller": 53,
+   "stock": null,
+   "kind": "P",
+   "sellerPlatform": "PistonHeads",
+   "buyerPlatform": "911UK",
+   "car": "991 GT3 (PDK)",
+   "brand": "Porsche",
+   "price": "",
+   "url": "https://www.pistonheads.com/gassing/topic.asp?h=0&t=2149730",
+   "status": ""
+  },
+  {
+   "id": 77,
    "fit": "Possible",
    "score": 2,
    "reason": "Sports Series as a close alternative to the 600LT wanted; asking £85,000, budget not stated",
@@ -6573,7 +6497,7 @@
    "status": ""
   },
   {
-   "id": 82,
+   "id": 78,
    "fit": "Possible",
    "score": 2,
    "reason": "GT3 as a close alternative to the GT3 RS wanted; asking £199,995, budget not stated",
@@ -6592,7 +6516,7 @@
    "status": "For sale"
   },
   {
-   "id": 83,
+   "id": 79,
    "fit": "Possible",
    "score": 2,
    "reason": "GT3 as a close alternative to the GT3 RS wanted; asking £183,950, budget not stated",
@@ -6611,7 +6535,7 @@
    "status": "For sale"
   },
   {
-   "id": 84,
+   "id": 80,
    "fit": "Possible",
    "score": 2,
    "reason": "GT3 as a close alternative to the GT3 RS wanted; asking £166,950, budget not stated",
@@ -6630,7 +6554,7 @@
    "status": "For sale"
   },
   {
-   "id": 85,
+   "id": 81,
    "fit": "Possible",
    "score": 2,
    "reason": "Targa as a close alternative to the 911 Cabriolet wanted; asking £97,995, budget £90,000 (£7,995 over)",
@@ -6649,10 +6573,10 @@
    "status": "For sale"
   },
   {
-   "id": 86,
+   "id": 82,
    "fit": "Possible",
    "score": 2.0,
-   "reason": "Same Aventador (standard vs the Evo wanted); asking £255,000, budget not stated",
+   "reason": "Same Aventador (standard vs the EVO wanted); asking £255,000, budget not stated",
    "date": "2026-08-14",
    "cross": true,
    "buyer": 66,
@@ -6668,10 +6592,10 @@
    "status": ""
   },
   {
-   "id": 87,
+   "id": 83,
    "fit": "Possible",
    "score": 2.0,
-   "reason": "Same Huracan (PERFORMANTE vs the Evo wanted); asking £299,995, budget not stated",
+   "reason": "Same Huracan (Performante vs the EVO wanted); asking £299,995, budget not stated",
    "date": "2026-08-14",
    "cross": true,
    "buyer": 66,
@@ -6687,10 +6611,10 @@
    "status": "For sale"
   },
   {
-   "id": 88,
+   "id": 84,
    "fit": "Possible",
    "score": 1.5,
-   "reason": "Same Aventador (SV vs the Evo wanted); asking £599,995, budget not stated; deposit taken",
+   "reason": "Same Aventador (SV vs the EVO wanted); asking £599,995, budget not stated; deposit taken",
    "date": "2026-08-14",
    "cross": true,
    "buyer": 66,
@@ -6706,7 +6630,7 @@
    "status": "Deposit Taken"
   },
   {
-   "id": 89,
+   "id": 85,
    "fit": "Possible",
    "score": 1.5,
    "reason": "Open to any Bentley; this is a Continental; asking £129,995, budget not stated",
@@ -6725,7 +6649,7 @@
    "status": "For sale"
   },
   {
-   "id": 90,
+   "id": 86,
    "fit": "Possible",
    "score": 1.5,
    "reason": "Open to any Bentley; this is a Bentayga; asking £132,995, budget not stated",
@@ -6744,7 +6668,7 @@
    "status": "For sale"
   },
   {
-   "id": 91,
+   "id": 87,
    "fit": "Possible",
    "score": 1.5,
    "reason": "Open to any Bentley; this is a Continental; asking £113,950, budget not stated",
@@ -6763,7 +6687,7 @@
    "status": "For sale"
   },
   {
-   "id": 92,
+   "id": 88,
    "fit": "Possible",
    "score": 2,
    "reason": "650S as a close alternative to the 720S wanted; asking £264,995, budget not stated",
@@ -6782,10 +6706,10 @@
    "status": "For sale"
   },
   {
-   "id": 93,
+   "id": 89,
    "fit": "Possible",
    "score": 1.5,
-   "reason": "Same 812 (COMPETIZIONE vs the Gts wanted); asking POA, budget not stated; deposit taken",
+   "reason": "Same 812 (Competizione vs the GTS wanted); asking POA, budget not stated; deposit taken",
    "date": "2026-08",
    "cross": true,
    "buyer": 75,
@@ -6801,10 +6725,10 @@
    "status": "Deposit Taken"
   },
   {
-   "id": 94,
+   "id": 90,
    "fit": "Possible",
    "score": 2.0,
-   "reason": "Same Huracan (PERFORMANTE vs the Evo wanted); asking £299,995, budget not stated",
+   "reason": "Same Huracan (Performante vs the EVO wanted); asking £299,995, budget not stated",
    "date": "2026-07-29",
    "cross": true,
    "buyer": 76,
@@ -6820,10 +6744,10 @@
    "status": "For sale"
   },
   {
-   "id": 95,
+   "id": 91,
    "fit": "Possible",
    "score": 2.0,
-   "reason": "Same 488 (PISTA vs the Gtb wanted); asking £409,995, budget not stated",
+   "reason": "Same 488 (Pista vs the GTB wanted); asking £409,995, budget not stated",
    "date": "2026-07-14",
    "cross": true,
    "buyer": 80,
@@ -6839,7 +6763,7 @@
    "status": "For sale"
   },
   {
-   "id": 96,
+   "id": 92,
    "fit": "Possible",
    "score": 2,
    "reason": "812 as a close alternative to the F12 wanted; asking £409,995, budget not stated",
@@ -6858,10 +6782,10 @@
    "status": "For sale"
   },
   {
-   "id": 97,
+   "id": 93,
    "fit": "Possible",
    "score": 2.0,
-   "reason": "Same Huracan (PERFORMANTE vs the Sterrato wanted); asking £299,995, budget not stated",
+   "reason": "Same Huracan (Performante vs the Sterrato wanted); asking £299,995, budget not stated",
    "date": "2026-07",
    "cross": true,
    "buyer": 123,
@@ -6877,7 +6801,7 @@
    "status": "For sale"
   },
   {
-   "id": 98,
+   "id": 94,
    "fit": "Possible",
    "score": 1.5,
    "reason": "812 as a close alternative to the F12 wanted; asking POA, budget not stated; deposit taken",
@@ -6896,7 +6820,7 @@
    "status": "Deposit Taken"
   },
   {
-   "id": 99,
+   "id": 95,
    "fit": "Possible",
    "score": 2,
    "reason": "488 as a close alternative to the F8 wanted; asking £409,995, budget not stated",
@@ -6915,7 +6839,7 @@
    "status": "For sale"
   },
   {
-   "id": 100,
+   "id": 96,
    "fit": "Possible",
    "score": 1.5,
    "reason": "812 as a close alternative to the F12 wanted; asking POA, budget £150,000; deposit taken",
@@ -6934,7 +6858,45 @@
    "status": "Deposit Taken"
   },
   {
-   "id": 101,
+   "id": 97,
+   "fit": "Possible",
+   "score": 2.0,
+   "reason": "Same F430 (paddle-shift; buyer wants a manual); asking £749,995, budget not stated",
+   "date": "2026-04",
+   "cross": true,
+   "buyer": 129,
+   "seller": null,
+   "stock": 4,
+   "kind": "D",
+   "sellerPlatform": "Premier GT",
+   "buyerPlatform": "Ferrari Owners Club GB (small ads)",
+   "car": "2009 Ferrari F430 Scuderia Spider 16M",
+   "brand": "Ferrari",
+   "price": "£749,995",
+   "url": "https://www.premiergt.com/used/cars/ferrari/f430/scuderia-spider-16m-1-of-499-1-of-48-rhd-uk-car-factory-satin-paint-2174",
+   "status": "For sale"
+  },
+  {
+   "id": 98,
+   "fit": "Possible",
+   "score": 2.0,
+   "reason": "Same F430 (paddle-shift; buyer wants a manual); asking £409,995, budget not stated",
+   "date": "2026-04",
+   "cross": true,
+   "buyer": 129,
+   "seller": null,
+   "stock": 6,
+   "kind": "D",
+   "sellerPlatform": "Premier GT",
+   "buyerPlatform": "Ferrari Owners Club GB (small ads)",
+   "car": "2010 Ferrari F430 Scuderia",
+   "brand": "Ferrari",
+   "price": "£409,995",
+   "url": "https://www.premiergt.com/used/cars/ferrari/f430/scuderia-uk-supplied-full-fsh-grigio-corsa-racing-livery-carbon-int-2198",
+   "status": "For sale"
+  },
+  {
+   "id": 99,
    "fit": "Possible",
    "score": 2,
    "reason": "GT3 RS as a close alternative to the GT3 wanted; asking £399,995, budget not stated",
@@ -6953,7 +6915,7 @@
    "status": "For sale"
   },
   {
-   "id": 102,
+   "id": 100,
    "fit": "Possible",
    "score": 2,
    "reason": "488 as a close alternative to the 458 wanted; asking £409,995, budget not stated",
@@ -6972,7 +6934,7 @@
    "status": "For sale"
   },
   {
-   "id": 103,
+   "id": 101,
    "fit": "Possible",
    "score": 2.5,
    "reason": "Same Phantom (standard vs the Drophead wanted); asking £249,950, budget not stated; South East / London",
@@ -6991,7 +6953,7 @@
    "status": "For sale"
   },
   {
-   "id": 104,
+   "id": 102,
    "fit": "Possible",
    "score": 2,
    "reason": "812 as a close alternative to the F12 wanted; asking £409,995, budget not stated",
@@ -7010,7 +6972,7 @@
    "status": "For sale"
   },
   {
-   "id": 105,
+   "id": 103,
    "fit": "Possible",
    "score": 1.5,
    "reason": "812 as a close alternative to the F12 wanted; asking POA, budget not stated; deposit taken",
