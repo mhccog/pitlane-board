@@ -16,10 +16,16 @@
     { id: "dealer", label: "Dealer", get: function (l) { return l.fit; }, order: ["Premier GT", "Scuderia Prestige", "Both", "None"] },
     { id: "match", label: "Stock match", get: function (l) { return l.matches > 0 ? "Has a match" : "No match"; }, hidden: true },
     { id: "flag", label: "Care", get: function (l) { return l.care.length ? "Needs care" : "No flags"; }, hidden: true }];
+  var FIT_RANK = { Strong: 0, Good: 1, Possible: 2 };
+  function pairOf(m) { return m.sellerPlatform + " \u2192 " + m.buyerPlatform; }
   var MATCH_FACETS = [
-    { id: "src", label: "Dealer", get: function (m) { return m.src === "PGT" ? "Premier GT" : m.src === "SP" ? "Scuderia Prestige" : "Private seller"; }, order: ["Premier GT", "Scuderia Prestige", "Private seller"] },
+    { id: "fit", label: "Fit", get: function (m) { return m.fit; }, order: ["Strong", "Good", "Possible"] },
     { id: "brand", label: "Brand", get: function (m) { return m.brand; } },
-    { id: "fit", label: "Fit", get: function (m) { return m.fit; }, order: ["Exact", "Close"] }];
+    { id: "sp", label: "Seller platform", get: function (m) { return m.sellerPlatform; } },
+    { id: "bp", label: "Buyer platform", get: function (m) { return m.buyerPlatform; } },
+    { id: "src", label: "Source", get: function (m) { return m.kind === "D" ? "Dealer stock" : "Private seller"; }, order: ["Private seller", "Dealer stock"] },
+    { id: "cross", label: "Platforms", get: function (m) { return m.cross ? "Cross-platform" : "Same platform"; }, hidden: true },
+    { id: "pair", label: "Pair", get: pairOf, hidden: true }];
   var STAGES = { B: ["New", "Reviewed", "Approved", "Contacted by Cyrus", "Closed"], S: ["New", "Valued", "Matched", "Passed to dealer", "Closed"] };
   var VIEWS = ["buyers", "sellers", "matches", "pgt", "sp", "care", "platforms", "sources"];
   var DEFAULT_COLS = [];
@@ -72,13 +78,20 @@
   }
   function filterMatches(matches, leadsById, st, skip) {
     return matches.filter(function (m) {
-      var l = leadsById[m.buyer];
-      return facetOK(m, MATCH_FACETS, st.sel, skip) && searchOK([l.handle, l.model, m.car, m.src, m.brand, m.status, m.url].join(" ").toLowerCase(), st.q);
+      var b = leadsById[m.buyer], sl = m.seller !== null && m.seller !== undefined ? leadsById[m.seller] : null;
+      return facetOK(m, MATCH_FACETS, st.sel, skip) && searchOK([b.handle, b.model, sl ? sl.handle : "", m.car, m.brand, m.sellerPlatform, m.buyerPlatform, m.reason, m.url].join(" ").toLowerCase(), st.q);
     });
+  }
+  function sortMatches(list) {
+    return list.slice().sort(function (a, b) { return (FIT_RANK[a.fit] - FIT_RANK[b.fit]) || cmp(b.date || "", a.date || "") || (b.score - a.score) || (a.id - b.id); });
+  }
+  function pairCounts(list) {
+    var c = {}; list.forEach(function (m) { var k = pairOf(m); c[k] = (c[k] || 0) + 1; });
+    return Object.keys(c).map(function (k) { return { value: k, count: c[k] }; }).sort(function (a, b) { return b.count - a.count || (a.value < b.value ? -1 : 1); });
   }
   function archived(l) { return l.tier === "Watch" || (l.age !== null && l.age !== undefined && l.age > 90); }
   function anyFilter(st) { if (terms(st.q).length) return true; for (var k in st.sel) if (st.sel[k] && st.sel[k].length) return true; return false; }
-  function defaults() { return { view: "buyers", tab: "hotuk", mode: "table", q: "", sel: {}, cols: DEFAULT_COLS.slice(), sort: { key: "tier", dir: 1 }, lead: null, arch: false }; }
+  function defaults() { return { view: "buyers", tab: "hotuk", mode: "table", q: "", sel: {}, cols: DEFAULT_COLS.slice(), sort: { key: "tier", dir: 1 }, lead: null, pair: null, arch: false }; }
   function toHash(st) {
     var p = [];
     if (st.tab !== "hotuk" && (st.view === "buyers" || st.view === "sellers")) p.push("tab=" + st.tab);
@@ -88,6 +101,7 @@
     if (st.cols.length) p.push("cols=" + st.cols.join("~"));
     if (st.sort && (st.sort.key !== "tier" || st.sort.dir !== 1)) p.push("sort=" + st.sort.key + (st.sort.dir < 0 ? "-" : ""));
     if (st.lead !== null && st.lead !== undefined) p.push("lead=" + st.lead);
+    if (st.pair !== null && st.pair !== undefined) p.push("pair=" + st.pair);
     if (st.arch) p.push("arch=1");
     return "#/" + st.view + (p.length ? "?" + p.join("&") : "");
   }
@@ -103,6 +117,7 @@
       else if (k === "cols") st.cols = val.split("~").filter(function (c) { return OPTIONAL_COLS.some(function (o) { return o.id === c; }); });
       else if (k === "sort") st.sort = { key: val.replace(/-$/, ""), dir: /-$/.test(val) ? -1 : 1 };
       else if (k === "lead") st.lead = parseInt(val, 10);
+      else if (k === "pair") st.pair = parseInt(val, 10);
       else if (k === "arch") st.arch = val === "1";
       else if (LEAD_FACETS.concat(MATCH_FACETS).some(function (f) { return f.id === k; })) st.sel[k] = val.split("~").map(decodeURIComponent).filter(Boolean);
     });
@@ -116,7 +131,7 @@
     return d;
   }
   var api = { TIER: TIER, KIND: KIND, TABS: TABS, LEAD_FACETS: LEAD_FACETS, MATCH_FACETS: MATCH_FACETS, STAGES: STAGES, OPTIONAL_COLS: OPTIONAL_COLS,
-    isUK: isUK, tabTest: tabTest, baseLeads: baseLeads, filterLeads: filterLeads, facetOptions: facetOptions, sortLeads: sortLeads, filterMatches: filterMatches,
+    isUK: isUK, tabTest: tabTest, baseLeads: baseLeads, filterLeads: filterLeads, facetOptions: facetOptions, sortLeads: sortLeads, filterMatches: filterMatches, sortMatches: sortMatches, pairCounts: pairCounts, pairOf: pairOf, FIT_RANK: FIT_RANK,
     archived: archived, anyFilter: anyFilter, defaults: defaults, toHash: toHash, fromHash: fromHash, fmtDate: fmtDate };
   if (typeof module !== "undefined" && module.exports) module.exports = api; else root.PL = api;
 })(this);
