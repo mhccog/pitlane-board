@@ -39,7 +39,7 @@ textarea{width:100%;min-height:56px;border:1px solid var(--bd);border-radius:10p
 </style></head><body><main>
 <div class="syncbar amber" id="syncbar"><span class="dot"></span><span class="msg">Loading sync…</span></div>
 <h1>Dealer Directory <span id="edited" class="mark hide">Edited</span></h1>
-<p class="cap">What each dealer is selling and wants to buy. Updated Thu 5 Nov 2026, 02:35 UK time. Click any text to edit; edits sync to Notion. <a href="https://app.notion.com/p/de3449111bcc4037a0af99ca4556884c" target="_blank" rel="noopener">Edit in Notion ↗</a></p>
+<p class="cap">What each dealer is selling and wants to buy. Updated Thu 5 Nov 2026, 02:36 UK time. Click any text to edit; edits sync to Notion. <a href="https://app.notion.com/p/de3449111bcc4037a0af99ca4556884c" target="_blank" rel="noopener">Edit in Notion ↗</a></p>
 <div class="bar" id="bar"></div><div id="app"></div>
 <div class="foot"><button class="btn" id="exp">Export CSV</button><button class="btn ghost" id="rst">Discard unsynced edits</button></div>
 <p class="cap">Public information only.</p></main><div class="toast" id="toast"></div>
@@ -177,9 +177,11 @@ function sync(){if(!key){paint();return Promise.resolve()}if(busy)return Promise
     ['stock','wants'].forEach(function(c){Object.keys(E[c]).forEach(function(id){if(!pend[id])delete E[c][id]})});
     E.deleted=E.deleted.filter(function(id){return pend[id]});
     nb.dealers.forEach(function(d){if(!pend[d.name]){if(d.notesText)E.notes[d.name]=d.notesText;else delete E.notes[d.name]}});
-    A.setB(nb);A.save();A.render();last=Date.now();localStorage.setItem(LK,last);state=skipped.length?'fail':'ok';err=skipped.length?skipped[0]+' (that edit was undone)':''})
+    A.setB(nb);A.save();if(editing())pendingRender=true;else A.render();last=Date.now();localStorage.setItem(LK,last);state=skipped.length?'fail':'ok';err=skipped.length?skipped[0]+' (that edit was undone)':''})
   .catch(function(e){state=e.status===401?'badkey':'fail';err=e.status?e.message:(navigator.onLine?"Can't reach the sync server":'Offline, will sync when back online');if(e.status!==401){clearTimeout(timer);timer=setTimeout(sync,15000)}if(e.status===401){key='';localStorage.removeItem(KK)}})
   .then(function(){busy=false;paint()})}
+var pendingRender=false;function editing(){var a=document.activeElement;return !!(a&&(a.isContentEditable||a.tagName==='TEXTAREA'||a.tagName==='SELECT'))}
+document.addEventListener('focusout',function(){if(pendingRender)setTimeout(function(){if(!editing()&&pendingRender){pendingRender=false;A.render()}},50)});
 function ago(t){var s=(Date.now()-t)/1000;return s<60?'just now':s<3600?Math.floor(s/60)+' min ago':s<86400?Math.floor(s/3600)+' h ago':Math.floor(s/86400)+' d ago'}
 function paint(){var el=document.getElementById('syncbar');if(!el)return;var n=Q.length,cls,msg,btn;
   if(!key){cls='amber';msg=state==='badkey'?(err||'Wrong passphrase')+'. Connect again to save edits':'Not connected. Edits stay on this device until you connect';btn='Connect sync'}
