@@ -39,7 +39,7 @@ textarea{width:100%;min-height:56px;border:1px solid var(--bd);border-radius:10p
 </style></head><body><main>
 <div class="syncbar amber" id="syncbar"><span class="dot"></span><span class="msg">Loading sync…</span></div>
 <h1>Dealer Directory <span id="edited" class="mark hide">Edited</span></h1>
-<p class="cap">What each dealer is selling and wants to buy. Updated Thu 5 Nov 2026, 02:24 UK time. Click any text to edit; edits sync to Notion. <a href="https://app.notion.com/p/de3449111bcc4037a0af99ca4556884c" target="_blank" rel="noopener">Edit in Notion ↗</a></p>
+<p class="cap">What each dealer is selling and wants to buy. Updated Thu 5 Nov 2026, 02:35 UK time. Click any text to edit; edits sync to Notion. <a href="https://app.notion.com/p/de3449111bcc4037a0af99ca4556884c" target="_blank" rel="noopener">Edit in Notion ↗</a></p>
 <div class="bar" id="bar"></div><div id="app"></div>
 <div class="foot"><button class="btn" id="exp">Export CSV</button><button class="btn ghost" id="rst">Discard unsynced edits</button></div>
 <p class="cap">Public information only.</p></main><div class="toast" id="toast"></div>
@@ -142,17 +142,18 @@ window.PITLANE_SYNC = { url: 'https://pitlane-sync.carplay.workers.dev' };
    device's localStorage (entered once via the sync bar); no token is in this file. */
 (function(){
 var CFG=window.PITLANE_SYNC||{},URL_=CFG.url,A=window.DDapp;if(!A||!URL_)return;
-var KK='pitlane-key',QK='pitlane-queue',LK='pitlane-last',key=localStorage.getItem(KK)||'',Q=jl(QK,[]),last=+localStorage.getItem(LK)||0,state='idle',err='',timer=null,busy=false;
+var KK='pitlane-key',QK='pitlane-queue',LK='pitlane-last',key=(localStorage.getItem(KK)||'').replace(/\s+/g,''),Q=jl(QK,[]),last=+localStorage.getItem(LK)||0,state='idle',err='',timer=null,busy=false;
 function jl(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
 function sq(){localStorage.setItem(QK,JSON.stringify(Q));paint()}
-function api(m,p,b){return fetch(URL_+p,{method:m,headers:{'Content-Type':'application/json','X-App-Key':key},body:b?JSON.stringify(b):undefined}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){var e=new Error(j.error||('HTTP '+r.status));e.status=r.status;throw e}return j})})}
+function api(m,p,b){return fetch(URL_+p,{method:m,headers:{'Content-Type':'application/json','X-App-Key':key},body:b?JSON.stringify(b):undefined}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){var e=new Error(why(r.status,j));e.status=r.status;throw e}return j})})}
+function why(st,j){var d=String(j.detail||''),f=(d.match(/^(\w+)\b/)||[])[1];if(st===401)return 'Wrong passphrase';if(st===429)return 'Notion is busy, retrying shortly';if(st===400)return 'Notion rejected '+(/Link/.test(d)?'Link':/Status/.test(d)?'Status':/Type/.test(d)?'Type':/Car/.test(d)?'Car':/dealer/i.test(d)?'Dealer':f||'the edit')+(d?': '+d:'');if(st===404&&/shared|integration/i.test(d))return 'Notion database not shared with the sync integration';if(st===404)return 'That row no longer exists in Notion';if(st>=500)return 'Notion error, retrying shortly';return 'HTTP '+st}
 function dealerId(name){var d=A.B().dealers.filter(function(x){return x.name===name})[0];return d?d.id:''}
 function toW(col,r){if(col==='stock'){var cs=r.status==='Coming soon';return{car:((r.make||'')+' '+(r.model||'')).trim(),type:cs?'Coming soon':'Selling',status:cs?'Available':(r.status||'Available'),year:r.year||'',miles:r.miles||'',price:r.price||'',gearbox:r.gearbox||'',link:r.url||'',notes:r.notes||'',dealer:dealerId(r.dealer)}}
   var t=r.type==='coming_soon'?'Coming soon':r.type==='sold_post'?'Selling':'Wants to buy';return{car:r.car||'',type:t,status:r.type==='sold_post'?'Sold':'Available',notes:r.detail||'',link:r.url||'',date:r.date||'',dealer:dealerId(r.dealer)}}
 function fromW(rows,ds){var old=A.B(),byName={};old.dealers.forEach(function(d){byName[d.name]=d});
-  var D=ds.map(function(d){var o=byName[d.name]||{};return Object.assign({},o,{id:d.id,name:d.name,town:d.town,web:d.website||o.web,note:o.note||'',notesText:d.notes})});
+  var D=ds.map(function(d){var o=byName[d.name]||{};return Object.assign({},o,{id:String(d.id).replace(/-/g,''),name:d.name,town:d.town,web:d.website||o.web,note:o.note||'',notesText:d.notes})});
   var nm={};D.forEach(function(d){nm[d.id.replace(/-/g,'')]=d.name});var S=[],W=[];
-  rows.forEach(function(c){var dealer=nm[(c.dealer||'').replace(/-/g,'')]||'',base={id:c.id,dealer:dealer,url:c.link,notion:c.url};
+  rows.forEach(function(c){var dealer=nm[(c.dealer||'').replace(/-/g,'')]||'',base={id:String(c.id).replace(/-/g,''),dealer:dealer,url:c.link,notion:c.url};
     if(c.type==='Wants to buy'){W.push(Object.assign(base,{type:'wants_to_buy',car:c.car,detail:c.notes,date:c.date}));return}
     var st=c.type==='Coming soon'&&(!c.status||c.status==='Available')?'Coming soon':(c.status||'Available');
     if(!c.year&&(st==='Sold'||st==='Gone')&&/linkedin/.test(c.link||'')){W.push(Object.assign(base,{type:'sold_post',car:c.car,detail:c.notes,date:c.date}));return}
@@ -165,30 +166,31 @@ function queue(op,col,id){if(op==='undelete'){var n=Q.length;Q=Q.filter(function
 function step(x){var E=A.E();
   if(x.op==='note'){var id=dealerId(x.id);return id?api('PATCH','/dealers/'+id,{notes:E.notes[x.id]||''}):Promise.resolve()}
   if(x.op==='delete')return api('DELETE','/rows/'+x.id).catch(function(e){if(e.status===404||e.status===410)return;throw e});
-  var r=A.find(x.col,x.id);if(!r)return Promise.resolve();var b=toW(x.col,r);
+  var r=A.find(x.col,x.id)||A.list(x.col).filter(function(y){return String(y.id).replace(/-/g,'')===String(x.id).replace(/-/g,'')})[0];if(!r)return Promise.resolve();var b=toW(x.col,r);
   if(/^new-/.test(x.id)||x.recreate)return api('POST','/rows',Object.assign(b,{appId:x.id})).then(function(){delete E[x.col][x.id];E.deleted=E.deleted.filter(function(i){return i!==x.id});A.save()});
   return api('PATCH','/rows/'+x.id,b).catch(function(e){if(e.status===404||e.status===410)return api('POST','/rows',b);throw e})}
 function sync(){if(!key){paint();return Promise.resolve()}if(busy)return Promise.resolve();if(!navigator.onLine){state='offline';paint();return Promise.resolve()}
   busy=true;state='syncing';paint();var run=Promise.resolve();
-  Q.slice().forEach(function(x){run=run.then(function(){return step(x)}).then(function(){Q=Q.filter(function(y){return y!==x});sq()})});
+  var skipped=[];Q.slice().forEach(function(x){run=run.then(function(){return step(x).catch(function(e){if(e.status===400||e.status===404||e.status===410){skipped.push(e.message);var E=A.E();if(E[x.col])delete E[x.col][x.id];A.save();return}throw e})}).then(function(){Q=Q.filter(function(y){return y!==x});sq()})});
   return run.then(function(){return Promise.all([api('GET','/rows'),api('GET','/dealers')])}).then(function(res){
     var nb=fromW(res[0].results,res[1].results),E=A.E(),pend={};Q.forEach(function(x){pend[x.id]=1});
     ['stock','wants'].forEach(function(c){Object.keys(E[c]).forEach(function(id){if(!pend[id])delete E[c][id]})});
     E.deleted=E.deleted.filter(function(id){return pend[id]});
     nb.dealers.forEach(function(d){if(!pend[d.name]){if(d.notesText)E.notes[d.name]=d.notesText;else delete E.notes[d.name]}});
-    A.setB(nb);A.save();A.render();last=Date.now();localStorage.setItem(LK,last);state='ok';err=''})
-  .catch(function(e){state=e.status===401?'badkey':'fail';err=e.message;if(e.status===401){key='';localStorage.removeItem(KK)}})
+    A.setB(nb);A.save();A.render();last=Date.now();localStorage.setItem(LK,last);state=skipped.length?'fail':'ok';err=skipped.length?skipped[0]+' (that edit was undone)':''})
+  .catch(function(e){state=e.status===401?'badkey':'fail';err=e.status?e.message:(navigator.onLine?"Can't reach the sync server":'Offline, will sync when back online');if(e.status!==401){clearTimeout(timer);timer=setTimeout(sync,15000)}if(e.status===401){key='';localStorage.removeItem(KK)}})
   .then(function(){busy=false;paint()})}
 function ago(t){var s=(Date.now()-t)/1000;return s<60?'just now':s<3600?Math.floor(s/60)+' min ago':s<86400?Math.floor(s/3600)+' h ago':Math.floor(s/86400)+' d ago'}
 function paint(){var el=document.getElementById('syncbar');if(!el)return;var n=Q.length,cls,msg,btn;
-  if(!key){cls='amber';msg=state==='badkey'?'Wrong passphrase. Connect again to save edits':'Not connected. Edits stay on this device until you connect';btn='Connect sync'}
+  if(!key){cls='amber';msg=state==='badkey'?(err||'Wrong passphrase')+'. Connect again to save edits':'Not connected. Edits stay on this device until you connect';btn='Connect sync'}
   else if(state==='syncing'){cls='blue';msg='Syncing…';btn=''}
-  else if(state==='fail'){cls='red';msg='Sync failed'+(err?' ('+err+')':'')+(n?' · '+n+' change'+(n>1?'s':'')+' waiting':'');btn='Retry'}
+  else if(state==='fail'){cls='red';msg='Sync failed · '+(err||'unknown error')+(n?' · '+n+' change'+(n>1?'s':'')+' waiting':'');btn='Retry'}
   else if(n){cls='blue pulse';msg=n+' change'+(n>1?'s':'')+' waiting'+(state==='offline'?' · offline':'');btn='Sync now'}
   else if(!last||Date.now()-last>864e5){cls='amber';msg='Out of date · last sync '+(last?ago(last):'never');btn='Sync now'}
   else{cls='green';msg='Synced · '+ago(last);btn='Sync now'}
   el.className='syncbar '+cls;el.innerHTML='<span class="dot"></span><span class="msg">'+msg+'</span>'+(btn?'<button id="syncbtn">'+btn+'</button>':'')}
-function connect(){var k=prompt('Pitlane sync passphrase (saved on this device only):');if(!k)return;key=k.trim();localStorage.setItem(KK,key);state='idle';sync()}
+function norm(k){return String(k||'').replace(/[\u2010-\u2015\u2212]/g,'-').replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\s+/g,'').trim()}
+function connect(){var k=prompt('Pitlane sync passphrase (saved on this device only):');if(!k)return;key=norm(k);if(/[^\x20-\x7e]/.test(key)){key='';state='badkey';err='Passphrase has characters a phone keyboard changed. Type it again';paint();return}localStorage.setItem(KK,key);state='idle';sync()}
 document.addEventListener('click',function(e){if(e.target.id==='syncbtn'){if(!key)connect();else sync()}});
 window.addEventListener('beforeunload',function(e){if(Q.length){e.preventDefault();e.returnValue='';return ''}});
 window.addEventListener('online',function(){sync()});setInterval(paint,30000);
