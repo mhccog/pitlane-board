@@ -36,10 +36,18 @@ textarea{width:100%;min-height:56px;border:1px solid var(--bd);border-radius:10p
 .syncbar.pulse .dot{animation:pl 1.2s ease-in-out infinite}@keyframes pl{50%{opacity:.25;transform:scale(1.5)}}
 .bar{top:64px}
 @media(max-width:640px){.syncbar{font-size:13px;padding:8px 10px}.syncbar button{padding:8px 14px}}
+#modal{display:none}#modal.open{display:block;position:fixed;inset:0;z-index:100}
+.mback{position:absolute;inset:0;background:rgba(16,24,40,.35);backdrop-filter:blur(3px);animation:fd .15s}
+.mbox{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(420px,calc(100vw - 32px));background:#fff;border-radius:16px;padding:22px 22px 18px;box-shadow:0 20px 50px rgba(16,24,40,.25);animation:pop .16s ease-out}
+.mbox h3{margin:0 0 6px;font-size:17px;line-height:1.3}.mbox p{margin:0 0 18px;color:#667085;font-size:14px}
+.mbtns{display:flex;gap:10px;justify-content:flex-end}.mbtns .btn{min-height:44px;padding:0 20px;border-radius:999px;font-weight:600}
+.btn.danger{background:#d92d20;color:#fff;border-color:#d92d20}.btn.danger:hover{background:#b42318}.dangertxt{color:#b42318;margin-top:8px}
+@keyframes fd{from{opacity:0}}@keyframes pop{from{opacity:0;transform:translate(-50%,-46%) scale(.97)}}
+@media(max-width:640px){.mbox{top:auto;bottom:16px;transform:translateX(-50%)}.mbtns .btn{flex:1}@keyframes pop{from{opacity:0;transform:translate(-50%,20px)}}}
 </style></head><body><main>
 <div class="syncbar amber" id="syncbar"><span class="dot"></span><span class="msg">Loading sync…</span></div>
 <h1>Dealer Directory <span id="edited" class="mark hide">Edited</span></h1>
-<p class="cap">What each dealer is selling and wants to buy. Updated Thu 5 Nov 2026, 02:36 UK time. Click any text to edit; edits sync to Notion. <a href="https://app.notion.com/p/de3449111bcc4037a0af99ca4556884c" target="_blank" rel="noopener">Edit in Notion ↗</a></p>
+<p class="cap">What each dealer is selling and wants to buy. Updated Thu 5 Nov 2026, 02:48 UK time. Click any text to edit; edits sync to Notion. <a href="https://app.notion.com/p/de3449111bcc4037a0af99ca4556884c" target="_blank" rel="noopener">Edit in Notion ↗</a></p>
 <div class="bar" id="bar"></div><div id="app"></div>
 <div class="foot"><button class="btn" id="exp">Export CSV</button><button class="btn ghost" id="rst">Discard unsynced edits</button></div>
 <p class="cap">Public information only.</p></main><div class="toast" id="toast"></div>
@@ -95,7 +103,7 @@ function render(){
   if(P.view!=='selling')inner+=sec(k+'-wants','Wants to buy',ws.length,wantsHtml(ws)+'<button class="btn ghost" data-add="wants" data-d="'+esc(d.name)+'">+ Add want</button>',true);
   if(P.sold&&P.view!=='wants')inner+=sec(k+'-sold','Sold / gone',gone.length+wsold.length,(gone.length?table(gone):'')+wantsHtml(wsold),false);
   inner+=sec(k+'-src','Sources',d.socials.length,d.socials.map(function(s){return '<div class="sm">'+(s[2]?'✓':'✗')+' <a href="'+esc(s[1])+'" target="_blank" rel="noopener">'+esc(s[0])+'</a>'+(s[2]?'':' — needs login, not read')+'</div>'}).join(''),false);
-  inner+=sec(k+'-notes','Notes',(E.notes[d.name]||'')?'•':'','<textarea data-note="'+esc(d.name)+'" placeholder="Notes about '+esc(d.name)+'…">'+esc(E.notes[d.name]||'')+'</textarea>',false);
+  inner+=sec(k+'-notes','Notes',(E.notes[d.name]||'')?'•':'','<textarea data-note="'+esc(d.name)+'" placeholder="Notes about '+esc(d.name)+'…">'+esc(E.notes[d.name]||'')+'</textarea><button class="btn ghost dangertxt" data-deld="'+esc(d.name)+'">Delete dealer</button>',false);
   h+='<details class="dealer" data-k="'+k+'"'+(P.open[k]===false?'':' open')+'><summary><span><h2 style="display:inline">'+ed('dealers',d.id,'label',d.label||d.name)+'</h2><span class="n">'+sell.length+' selling · '+ws.length+' wants</span></span></summary><div class="body">'+inner+'</div></details>'});
  document.getElementById('app').innerHTML=h;
  document.getElementById('edited').classList.toggle('hide',!anyEdits());
@@ -109,6 +117,12 @@ function bar(){var D=list('dealers');document.getElementById('bar').innerHTML=
  '<span class="colmenu" id="cm"><button class="btn" id="cmb">Columns</button><span class="m">'+COLS.map(function(c){return '<label><input type="checkbox" data-col="'+c[0]+'"'+(P.cols[c[0]]?' checked':'')+'> '+c[1]+'</label>'}).join('')+'</span></span>'+
  '<button class="btn ghost" id="xa">Expand all</button><button class="btn ghost" id="ca">Collapse all</button>';
  var qi=document.getElementById('q');if(window._qf){qi.focus();qi.setSelectionRange(qi.value.length,qi.value.length)}}
+function ask(title,body,ok){var m=document.getElementById('modal');if(!m){m=document.createElement('div');m.id='modal';document.body.appendChild(m)}
+ var prev=document.activeElement;m.innerHTML='<div class="mback" data-mx="1"></div><div class="mbox" role="alertdialog" aria-modal="true" aria-labelledby="mt"><h3 id="mt">'+esc(title)+'</h3><p>'+esc(body)+'</p><div class="mbtns"><button class="btn" id="mcancel">Cancel</button><button class="btn danger" id="mok">Delete</button></div></div>';m.className='open';
+ function close(y){m.className='';m.innerHTML='';document.removeEventListener('keydown',kd,true);if(prev&&prev.focus)try{prev.focus({preventScroll:true})}catch(e){};if(y)ok();else if(ask.onCancel)ask.onCancel();ask.onCancel=null}
+ function kd(e){if(e.key==='Escape'){e.preventDefault();close(false)}else if(e.key==='Tab'){var a=document.getElementById('mcancel'),b=document.getElementById('mok');e.preventDefault();(document.activeElement===a?b:a).focus()}}
+ document.addEventListener('keydown',kd,true);m.onclick=function(e){if(e.target.dataset.mx||e.target.id==='mcancel')close(false);else if(e.target.id==='mok')close(true)};document.getElementById('mcancel').focus()}
+function label(c,r){return c==='stock'?[r.year,r.make,r.model].filter(Boolean).join(' '):(r.car||'this want')}
 function toast(msg,fn){var t=document.getElementById('toast');t.innerHTML=esc(msg)+(fn?' <button id="und">Undo</button>':'');t.style.display='flex';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none'},5000);undo=fn}
 function dl(name,text,type){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type}));a.download=name;a.click()}
 function csv(rows,f){return [f.join(',')].concat(rows.map(function(r){return f.map(function(k){var v=String(r[k]==null?'':r[k]);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')})).join('\n')}
@@ -118,18 +132,19 @@ document.addEventListener('click',function(e){var t=e.target.closest('button,[da
  else if(t.dataset.sort){P.sort=t.dataset.sort;saveP();render()}
  else if(t.id==='cmb'){document.getElementById('cm').classList.toggle('open')}
  else if(t.id==='xa'||t.id==='ca'){document.querySelectorAll('details').forEach(function(d){d.open=t.id==='xa';P.open[d.dataset.k]=d.open});saveP()}
- else if(t.dataset.del){var c=t.dataset.del,id=t.dataset.i,r=find(c,id);E.deleted.push(id);save();render();q('delete',c,id);toast('Row deleted',function(){E.deleted=E.deleted.filter(function(x){return x!==id});save();render();q('undelete',c,id)})}
+ else if(t.dataset.del){var c=t.dataset.del,id=t.dataset.i,r=find(c,id);ask('Delete '+label(c,r)+'?','This removes the row here and moves it to Notion\'s trash when it syncs.',function(){E.deleted.push(id);save();render();q('delete',c,id);toast('Row deleted',function(){E.deleted=E.deleted.filter(function(x){return x!==id});save();render();q('undelete',c,id)})})}
+ else if(t.dataset.deld){var dn=t.dataset.deld,dd=list('dealers').filter(function(x){return x.name===dn})[0];ask('Delete dealer '+dn+'?','The dealer and its section are removed and the Notion row goes to trash when it syncs. Its cars stay in Notion.',function(){E.deleted.push(dd.id);save();render();q('delete','dealers',dd.id);toast('Dealer deleted',function(){E.deleted=E.deleted.filter(function(x){return x!==dd.id});save();render();q('undelete','dealers',dd.id)})})}
  else if(t.dataset.add){var c=t.dataset.add,id='new-'+Date.now()+'-'+(seq++),r=c==='stock'?{id:id,dealer:t.dataset.d,make:'Make',model:'Model',year:'',miles:'',price:'',gearbox:'',status:t.dataset.s,url:''}:{id:id,dealer:t.dataset.d,type:'wants_to_buy',car:'Car wanted',detail:'Detail',url:'',date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})};E[c][id]=r;save();render();q('upsert',c,id);toast('Row added — click any field to edit')}
  else if(t.id==='und'&&undo){undo();undo=null;document.getElementById('toast').style.display='none'}
  else if(t.id==='exp'){dl('dealer-stock.csv',csv(list('stock'),['dealer','make','model','year','miles','price','gearbox','status','url']),'text/csv');setTimeout(function(){dl('dealer-wants.csv',csv(list('wants'),['dealer','type','car','detail','url','date']),'text/csv')},300)}
  else if(t.id==='expj'){dl('overrides.json',JSON.stringify(E,null,1),'application/json')}
- else if(t.id==='rst'){if(confirm('Discard all edits in this browser and reload the latest data?')){localStorage.removeItem(KEY);E={stock:{},wants:{},dealers:{},notes:{},deleted:[]};render();localStorage.removeItem('pitlane-queue');location.reload()}}
+ else if(t.id==='rst'){var nq=(JSON.parse(localStorage.getItem('pitlane-queue')||'[]')).length;ask('Discard '+(nq?nq+' unsynced edit'+(nq>1?'s':''):'unsynced edits')+'?','Edits not yet saved to Notion are lost on this device.',function(){localStorage.removeItem(KEY);E={stock:{},wants:{},dealers:{},notes:{},deleted:[]};render();localStorage.removeItem('pitlane-queue');location.reload()})}
 });
 document.addEventListener('toggle',function(e){var d=e.target;if(d.dataset&&d.dataset.k){P.open[d.dataset.k]=d.open;saveP()}},true);
 document.addEventListener('change',function(e){var t=e.target;if(t.dataset.col){P.cols[t.dataset.col]=t.checked?1:0;saveP();render();document.getElementById('cm').classList.add('open')}
  else if(t.id==='sort'){P.sort=t.value;saveP();render()} else if(t.dataset.f){set(t.dataset.c,t.dataset.i,t.dataset.f,t.value)}});
 document.addEventListener('input',function(e){var t=e.target;if(t.id==='q'){P.q=t.value;saveP();window._qf=1;clearTimeout(window._qt);window._qt=setTimeout(function(){render();},120)}
- else if(t.dataset.note!=null){E.notes[t.dataset.note]=t.value;if(!t.value)delete E.notes[t.dataset.note];save();q('note','dealers',t.dataset.note);document.getElementById('edited').classList.toggle('hide',!anyEdits())}});
+ else if(t.dataset.note!=null){var nk=t.dataset.note,was=E.notes[nk]||'';if(!t.value&&was){ask('Clear notes for '+nk+'?','The notes box is emptied and Notion is updated when it syncs.',function(){delete E.notes[nk];save();q('note','dealers',nk);toast('Notes cleared',function(){E.notes[nk]=was;save();q('note','dealers',nk);render()})});ask.onCancel=function(){t.value=was};return}E.notes[t.dataset.note]=t.value;if(!t.value)delete E.notes[t.dataset.note];save();q('note','dealers',t.dataset.note);document.getElementById('edited').classList.toggle('hide',!anyEdits())}});
 document.addEventListener('focusout',function(e){var t=e.target;if(t.classList&&t.classList.contains('ed'))set(t.dataset.c,t.dataset.i,t.dataset.f,t.textContent.trim());if(t.id==='q')window._qf=0});
 document.addEventListener('keydown',function(e){if(e.target.classList&&e.target.classList.contains('ed')&&e.key==='Enter'){e.preventDefault();e.target.blur()}});
 document.addEventListener('click',function(e){if(e.target.closest('summary .ed'))e.preventDefault()},true);
@@ -160,18 +175,18 @@ function fromW(rows,ds){var old=A.B(),byName={};old.dealers.forEach(function(d){
     var i=(c.car||'').indexOf(' '),mk=i<0?c.car:c.car.slice(0,i),md=i<0?'':c.car.slice(i+1);
     S.push(Object.assign(base,{make:mk,model:md,year:c.year,miles:c.miles,price:c.price,gearbox:c.gearbox,status:st,notes:c.notes,manual:c.manual}))});
   return Object.assign({},old,{dealers:D,stock:S,wants:W})}
-function queue(op,col,id){if(op==='undelete'){var n=Q.length;Q=Q.filter(function(x){return!(x.op==='delete'&&x.id===id)});if(Q.length===n)Q.push({op:'upsert',col:col,id:id,recreate:true});}
-  else{Q=Q.filter(function(x){return!(x.id===id&&x.op===op)});if(op==='delete'&&/^new-/.test(id))Q=Q.filter(function(x){return x.id!==id});else Q.push({op:op,col:col,id:id})}
-  sq();clearTimeout(timer);timer=setTimeout(sync,2500)}
+function queue(op,col,id){if(op==='undelete'){var n=Q.length;Q=Q.filter(function(x){return!(x.op==='delete'&&x.id===id)});if(Q.length===n&&col!=='dealers')Q.push({op:'upsert',col:col,id:id,recreate:true});}
+  else{Q=Q.filter(function(x){return!(x.id===id&&x.op===op)});if(op==='delete'&&/^new-/.test(id))Q=Q.filter(function(x){return x.id!==id});else Q.push({op:op,col:col,id:id,ts:Date.now()})}
+  sq();clearTimeout(timer);timer=setTimeout(sync,op==='delete'?6000:2500)}
 function step(x){var E=A.E();
   if(x.op==='note'){var id=dealerId(x.id);return id?api('PATCH','/dealers/'+id,{notes:E.notes[x.id]||''}):Promise.resolve()}
-  if(x.op==='delete')return api('DELETE','/rows/'+x.id).catch(function(e){if(e.status===404||e.status===410)return;throw e});
+  if(x.op==='delete')return api('DELETE',(x.col==='dealers'?'/dealers/':'/rows/')+x.id).catch(function(e){if(e.status===404||e.status===410)return;throw e});
   var r=A.find(x.col,x.id)||A.list(x.col).filter(function(y){return String(y.id).replace(/-/g,'')===String(x.id).replace(/-/g,'')})[0];if(!r)return Promise.resolve();var b=toW(x.col,r);
   if(/^new-/.test(x.id)||x.recreate)return api('POST','/rows',Object.assign(b,{appId:x.id})).then(function(){delete E[x.col][x.id];E.deleted=E.deleted.filter(function(i){return i!==x.id});A.save()});
   return api('PATCH','/rows/'+x.id,b).catch(function(e){if(e.status===404||e.status===410)return api('POST','/rows',b);throw e})}
 function sync(){if(!key){paint();return Promise.resolve()}if(busy)return Promise.resolve();if(!navigator.onLine){state='offline';paint();return Promise.resolve()}
   busy=true;state='syncing';paint();var run=Promise.resolve();
-  var skipped=[];Q.slice().forEach(function(x){run=run.then(function(){return step(x).catch(function(e){if(e.status===400||e.status===404||e.status===410){skipped.push(e.message);var E=A.E();if(E[x.col])delete E[x.col][x.id];A.save();return}throw e})}).then(function(){Q=Q.filter(function(y){return y!==x});sq()})});
+  var skipped=[];Q.slice().filter(function(x){return !(x.op==='delete'&&Date.now()-(x.ts||0)<5500)}).forEach(function(x){run=run.then(function(){return step(x).catch(function(e){if(e.status===400||e.status===404||e.status===410){skipped.push(e.message);var E=A.E();if(E[x.col])delete E[x.col][x.id];A.save();return}throw e})}).then(function(){Q=Q.filter(function(y){return y!==x});sq()})});
   return run.then(function(){return Promise.all([api('GET','/rows'),api('GET','/dealers')])}).then(function(res){
     var nb=fromW(res[0].results,res[1].results),E=A.E(),pend={};Q.forEach(function(x){pend[x.id]=1});
     ['stock','wants'].forEach(function(c){Object.keys(E[c]).forEach(function(id){if(!pend[id])delete E[c][id]})});
